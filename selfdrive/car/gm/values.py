@@ -164,7 +164,7 @@ class CAR(Platforms):
   )
   XT4  = GMPlatformConfig(
     "CADILLAC XT4 2023",
-    GMCarInfo("CADILLAC XT4 2023"),
+    GMCarInfo("Cadillac XT4 2023", "Driver Assist Package"),
     specs=CarSpecs(mass=3660, wheelbase=2.78, steerRatio=14.4, centerToFrontRatio=0.4),
   )
   TRAILBLAZER = GMPlatformConfig(
@@ -195,6 +195,12 @@ class CanBus:
   CHASSIS = 2
   LOOPBACK = 128
   DROPPED = 192
+
+class GMFlags(IntFlag):
+  PEDAL_LONG = 1
+  CC_LONG = 2
+  NO_CAMERA = 4
+  NO_ACCELERATOR_POS_MSG = 8
 
 
 # In a Data Module, an identifier is a string used to recognize an object,
@@ -234,6 +240,9 @@ FW_QUERY_CONFIG = FwQueryConfig(
 )
 
 EV_CAR = {CAR.VOLT, CAR.BOLT_EUV}
+
+# We're integrated at the Safety Data Gateway Module on these cars
+SDGM_CAR = {CAR.XT4}
 
 # We're integrated at the camera with VOACC on these cars (instead of ASCM w/ OBD-II harness)
 CAMERA_ACC_CAR = {CAR.BOLT_EUV, CAR.SILVERADO, CAR.EQUINOX, CAR.TRAILBLAZER}
