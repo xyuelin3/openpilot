@@ -45,6 +45,12 @@ class CarControllerParams:
       # Camera transitions to MAX_ACC_REGEN from ZERO_GAS and uses friction brakes instantly
       max_regen_acceleration = 0.
 
+    elif CP.carFingerprint in SDGM_CAR:
+      self.MAX_GAS = 3400
+      self.MAX_ACC_REGEN = 1514
+      self.INACTIVE_REGEN = 1554
+      max_regen_acceleration = 0.
+
     else:
       self.MAX_GAS = 3072  # Safety limit, not ACC max. Stock ACC >4096 from standstill.
       self.MAX_ACC_REGEN = 1404  # Max ACC regen is slightly less than max paddle regen
@@ -155,6 +161,11 @@ class CAR(Platforms):
     "CHEVROLET EQUINOX 2019",
     GMCarInfo("Chevrolet Equinox 2019-22"),
     specs=CarSpecs(mass=1588, wheelbase=2.72, steerRatio=14.4, centerToFrontRatio=0.4),
+  )
+  XT4  = GMPlatformConfig(
+    "CADILLAC XT4 2023",
+    GMCarInfo("CADILLAC XT4 2023"),
+    specs=CarSpecs(mass=3660, wheelbase=2.78, steerRatio=14.4, centerToFrontRatio=0.4),
   )
   TRAILBLAZER = GMPlatformConfig(
     "CHEVROLET TRAILBLAZER 2021",
